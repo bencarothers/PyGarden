@@ -1,4 +1,4 @@
-**TwiPy Garden**
+##TwiPy Garden
 
 A program written in python that monitors the specified twitter account looking
 for tweets that contain the #waterMe and triggers a drip irrigation valve with
@@ -12,5 +12,5 @@ I wanted a lightweight program with simple controls to water my garden
 
 ## Selected Libraries Used
 
-Python-Twitter API
+**Python-Twitter API
 

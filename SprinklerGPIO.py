@@ -9,7 +9,7 @@ class SprinklerGPIO():
 	# GPIO pins
 	PIN_SR_CLK = 4
 	PIN_SR_NOE = 17
-	PIN_SR_DAT = 21 # NOTE: if you have a RPi rev.2, need to change this to 27
+	PIN_SR_DAT = 27
 	PIN_SR_LAT = 22
 
 	def __init__(self, numberOfStations):

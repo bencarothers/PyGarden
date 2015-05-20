@@ -1,22 +1,18 @@
 BCM = "Mleh"
 OUT = "out"
 
-
 def cleanup():
-	# nothing
-	return
-
+    # nothing
+    return
 
 def setmode(mode):
-	# nothing
-	return
-
+    # nothing
+    return
 
 def setup(pin, mode):
-	# nothing
-	return
-
+    # nothing
+    return
 
 def output(pin, value):
-	# nothing
-	return
+    # nothing
+    return
