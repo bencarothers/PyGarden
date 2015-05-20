@@ -1,7 +1,0 @@
-import SprinklerGPIO
-
-if __name__ == "__main__":
-    drip = SprinklerGPIO(1)
-    drip.setStationStatus(1,1)
-    time.sleep(60)
-    drip.setStationStatus(1,0)
