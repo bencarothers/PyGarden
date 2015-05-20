@@ -1,2 +1,11 @@
-# PyGarden
-Twitter enabled garden watering 
+**TwiPy Garden
+
+**What**
+
+**How**
+
+## Motivation
+
+## Installation and Running
+
+## Selected Libraries Used
