@@ -4,7 +4,7 @@
 #******************************************#
 
 import SprinklerGPIO
-import twitter
+import TwitterLogin
 import logging
 import time
 import re
@@ -23,11 +23,8 @@ def waterWatcher():
 
       #TODO move this a file that isn't tracked by git
 
-        api = twitter.Api(consumer_key='Z6tyBKfbWTIkbXX1XeOTU3qGF',
-                      consumer_secret='MwVDyHYq4Ria4ub3pAmq7D38dgAEtCJKCVgKOMkBimaJpRkZwp',
-                      access_token_key='3119886269-GQfctpmBOpY3wodDxO69SoRdDkCRBYNVjiFOcO0',
-                      access_token_secret='6wBXAhL2WjYMZw97patQZUSbJ2GjNjbkRftflrwldpGrn'
-                      )
+        thirstyGarden = TwitterLogin()
+        api = thirstyGarden.api
 
                                          # -- Represents the number of OSPi stations
                                          # |
@@ -35,7 +32,7 @@ def waterWatcher():
 
         #  Lists all tweets on the user's TimeLine
         status = api.GetUserTimeline('X')
-        
+
         for x in range(len(status)):
             tweets = [s.text for s in status]
 
