@@ -6,9 +6,13 @@ specified parameters by interfacing with the Open Sprinkler Pi
 
 ## Motivation
 
-I wanted a lightweight program with simple controls to water my garden
+This program provides a lightweight, functional means of watering my garden with
+simple and powerful commands. The service is also available from anywhere I can
+access Twitter
 
 ## Installation and Running
+
+The TwitterLogin class is not hosted on Github. The class is primarily used to create a Twitter API object, and then access it while keeping the login criteria private. Giving the class an api attribute in the init function would give you all the functionality necessary.
 
 ## Selected Libraries Used
 
