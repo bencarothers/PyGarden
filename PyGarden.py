@@ -46,7 +46,7 @@ def waterWatcher():
 
 
 def waterForXMinutes(foundOptions,dripController):
-    minutes = .1 if len(foundOptions) < 2 else int(foundOptions[1])
+    minutes = 1 if len(foundOptions) < 2 else int(foundOptions[1])
     dripController.setStationStatus(0,1)
     time.sleep(minutes * 60)
     dripController.setStationStatus(0,0)

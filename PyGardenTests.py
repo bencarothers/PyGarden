@@ -1,4 +1,5 @@
 import PyGarden
+import SprinklerGPIO
 import unittest
 import re
 
@@ -32,7 +33,7 @@ class GPIOTests(unittest.TestCase):
 
     def testNumberOfStations(self):
       dripController = SprinklerGPIO.SprinklerGPIO(1)
-      self.assertEqual(len(dripController.numberOfStations), 1)
+      self.assertEqual(dripController.numberOfStations, 1)
 
     def testOpenDrip(self):
       dripController = SprinklerGPIO.SprinklerGPIO(1)
