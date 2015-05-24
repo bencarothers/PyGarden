@@ -12,8 +12,9 @@ import time
 import re
 
 fileConfig('logging_config.ini')
-logger = logging.getLogger()
+logger = logging.getLogger("WaterLogged.out")
 
+# Connects to the garden's Twitter account
 # using user specific keys and secrets
 
 thirstyGarden = TwitterLogin.thirstyGarden()
