@@ -4,7 +4,7 @@ except ImportError:
 	import GPIOStub as GPIO
 
 
-class SprinklerGPIO():
+class SprinklerGPIO:
 
 	# GPIO pins
 	PIN_SR_CLK = 4
