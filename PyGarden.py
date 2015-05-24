@@ -16,7 +16,6 @@ logger = logging.getLogger("WaterLogged.out")
 
 # Connects to the garden's Twitter account
 # using user specific keys and secrets
-
 thirstyGarden = TwitterLogin.thirstyGarden()
 api = thirstyGarden.api
 
@@ -27,11 +26,12 @@ def waterWatcher():
 
         for x in range(len(tweetsOnTimeline)):
             tweets = [s.text for s in tweetsOnTimeline]
-            waterOptions = re.compile(r"#waterMe \d+|#waterMe")
-            foundOptions = waterOptions.search(tweets[0]).group().split(" ")
+            waterOptions = re.compile(r"#waterMe \d+|#waterMe").search(tweets[0])
+            foundOptions = "none found" if waterOptions is None else waterOptions.group().split(" ") 
 
             if foundOptions[0] == '#waterMe':
-                waterForXMinutes(foundOptions,dripController)
+                minutes = dripController.waterForXMinutes(0,foundOptions)
+                logger.debug("The garden was watered for %d minutes" % minutes)
                 api.DestroyStatus(tweetsOnTimeline[0].id)
 
             else:
@@ -43,15 +43,6 @@ def waterWatcher():
     finally:
         if dripController.getStationStatus(0) == 1:
             dripController.setStationStatus(0,0)
-
-
-def waterForXMinutes(foundOptions,dripController):
-    minutes = 1 if len(foundOptions) < 2 else int(foundOptions[1])
-    dripController.setStationStatus(0,1)
-    time.sleep(minutes * 60)
-    dripController.setStationStatus(0,0)
-    logger.debug("The garden was watered for %d minutes" % minutes)
-
 
 if __name__ == "__main__":
     while 1:

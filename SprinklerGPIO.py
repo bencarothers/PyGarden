@@ -2,6 +2,7 @@ try:
 	import RPi.GPIO as GPIO
 except ImportError:
 	import GPIOStub as GPIO
+import time
 
 
 class SprinklerGPIO:
@@ -61,3 +62,14 @@ class SprinklerGPIO:
 		self.currentValues = [0]*self.numberOfStations
 		self.updateRegister()
 		GPIO.cleanup()
+
+        def waterForXMinutes(self,Station,Options):
+	    minutes = 1 if len(Options) < 2 else int(Options[1])
+            self.setStationStatus(Station,1)
+       	    time.sleep(minutes * 60)
+	    self.setStationStatus(Station,0)
+            return minutes
+
+
+
+
