@@ -30,7 +30,7 @@ def waterWatcher():
             foundOptions = waterOptions.search(tweets[0]).group().split(" ")
 
             if foundOptions[0] == '#waterMe':
-                waterForXMinutes(foundOptions)
+                waterForXMinutes(foundOptions,dripController)
                 api.DestroyStatus(tweetsOnTimeline[0].id)
 
             else:
@@ -44,16 +44,15 @@ def waterWatcher():
             dripController.setStationStatus(0,0)
 
 
-def waterForXMinutes(x):
+def waterForXMinutes(foundOptions,dripController):
     minutes = .1 if len(foundOptions) < 2 else int(foundOptions[1])
     dripController.setStationStatus(0,1)
     time.sleep(minutes * 60)
     dripController.setStationStatus(0,0)
     logger.debug("The garden was watered for %d minutes" % minutes)
 
-def notifyUser():
-    #TODO
 
-while 1:
+if __name__ == "__main__":
+    while 1:
         waterWatcher()
 
