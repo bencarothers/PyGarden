@@ -17,6 +17,7 @@ logging.basicConfig(filename=LOG_FILENAME,
                     )
 
 # Connect to the Garden's Twitter account
+
 def waterWatcher():
     try:
 
@@ -34,9 +35,8 @@ def waterWatcher():
 
         #  Lists all tweets on the user's TimeLine
         status = api.GetUserTimeline('X')
-
-        while len(status) > 0:
-
+        
+        for x in range(len(status)):
             tweets = [s.text for s in status]
 
             gardenRe = re.compile(r"#waterMe \d+|#waterMe")
@@ -44,10 +44,10 @@ def waterWatcher():
 
             if options[0] == '#waterMe':
                 drip.setStationStatus(0,1)
-                minutes = 1 if len(options) < 2 else int(options[1])
+                minutes = .1 if len(options) < 2 else int(options[1])
                 time.sleep(minutes * 60)
                 drip.setStationStatus(0,0)
-                logging.debug('The garden was watered for %d minutes on %s' % minutes, today.ctime())
+                logging.debug('The garden was watered for %d minutes' % minutes)
                 #TODO notify user in some way the garden has been watered
                 api.DestroyStatus(status[0].id)
             else:
