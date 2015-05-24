@@ -10,3 +10,8 @@ class thirstyGarden:
                                access_token_key='',
                                access_token_secret=''
                                )
+    def junkNotification(self):
+        self.api.PostUpdate("Just deleted a junk command",         )
+
+    def waterNotification(self,minutes):
+        self.api.PostUpdate("Watered the garden for %d minutes." % minutes ,         )
