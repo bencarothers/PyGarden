@@ -13,7 +13,7 @@ access Twitter.
 
 You'll need to fill in the TwitterLogin.py file with the appropriate keys and secrets so that the program will have access to the Twitter accounts timeline.
 
-#waterMe can be located anywhere in the tweet, but the positive integer must follow the hashtag with a single space in between the two.
+\#waterMe can be located anywhere in the tweet, but the positive integer must follow the hashtag with a single space in between the two.
 
 ## Selected Libraries Used
 
