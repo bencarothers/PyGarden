@@ -1,19 +1,30 @@
-import GardenTweet
+import PyGarden
 import unittest
+import re
 
-class GardenInput(unittest.TestCase):
+class OptionsInput(unittest.TestCase):
+    waterOptions = re.compile(r"#waterMe \d+|#waterMe")
 
-    def testGoodInput(x):
+    goodInput = "I am searching for #waterMe"
+    goodInputWithTime = "I am searching for #waterMe 2"
+    badInput = "Nothing here"
+    faultyTime = "#waterMe -2"
 
-    def testFoodInputWithTime(x)
+    def testGoodInput(self):
+        result = waterOptions.search(goodInput)
+        self.assertEqual(result.group(),'#waterMe')
 
-    def testBadInput(x):
+    def testFoodInputWithTime(self):
+        result = waterOptions.search(goodInputWithTime)
+        self.assertEqual(result.group(),'#waterMe 2')
 
-if __name__ == "__main__":
-    drip = SprinklerGPIO.SprinklerGPIO(1)
-    drip.setStationStatus(0, 1)
-    for x in range(10):
-        print x
-        time.sleep(1)
-    drip.setStationStatus(0, 0)
-    print "drip was turned off"
+    def testBadInput(self):
+        result = waterOptions.search(badInput)
+        self.assertEqual(result.group(),'')
+
+    def testFaultyTime(self):
+        result = waterOptions.search(faultyTime)
+        self.assertEqual(result.group(),'#waterMe -2')
+
+if __name__ == '__main__':
+      unittest.main()
