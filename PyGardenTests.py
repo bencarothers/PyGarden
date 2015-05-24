@@ -3,28 +3,30 @@ import unittest
 import re
 
 class OptionsInput(unittest.TestCase):
-    waterOptions = re.compile(r"#waterMe \d+|#waterMe")
-
-    goodInput = "I am searching for #waterMe"
-    goodInputWithTime = "I am searching for #waterMe 2"
-    badInput = "Nothing here"
-    faultyTime = "#waterMe -2"
 
     def testGoodInput(self):
+        goodInput = "I am searching for #waterMe"
+        waterOptions = re.compile(r"#waterMe \d+|#waterMe")
         result = waterOptions.search(goodInput)
         self.assertEqual(result.group(),'#waterMe')
 
-    def testFoodInputWithTime(self):
+    def testGoodInputWithTime(self):
+        goodInputWithTime = "I am searching for #waterMe 2"
+        waterOptions = re.compile(r"#waterMe \d+|#waterMe")
         result = waterOptions.search(goodInputWithTime)
         self.assertEqual(result.group(),'#waterMe 2')
 
     def testBadInput(self):
+        badInput = "Nothing here"
+        waterOptions = re.compile(r"#waterMe \d+|#waterMe")
         result = waterOptions.search(badInput)
-        self.assertEqual(result.group(),'')
+        self.assertEqual(result,None)
 
     def testFaultyTime(self):
+        faultyTime = "#waterMe -2"
+        waterOptions = re.compile(r"#waterMe \d+|#waterMe")
         result = waterOptions.search(faultyTime)
-        self.assertEqual(result.group(),'#waterMe -2')
+        self.assertEqual(result.group(),'#waterMe')
 
 if __name__ == '__main__':
       unittest.main()
