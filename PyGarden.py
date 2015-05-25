@@ -1,8 +1,6 @@
 #******************************************#
 #       Twitter-Enabled Garden Watering    #
-#                                          #
 #          Author: Ben Carothers           #
-#                                          #
 #******************************************#
 
 from logging.config import fileConfig
@@ -15,8 +13,7 @@ import re
 fileConfig('logging_config.ini')
 logger = logging.getLogger("WaterLogged.out")
 
-# Connects to the garden's Twitter account
-# using user specific keys and secrets
+# Connects to the garden's Twitter account using user specific keys and secrets
 thirstyGarden = TwitterLogin.thirstyGarden()
 api = thirstyGarden.api
 
@@ -24,10 +21,8 @@ def waterWatcher():
    '''Scrapes the Timeline from the garden's twitter and executes commands accordingly'''
 
     try:
-
         dripController = SprinklerGPIO.SprinklerGPIO(1)
         tweetsOnTimeline = api.GetUserTimeline('X')
-
         for x in range(len(tweetsOnTimeline)):
             tweets = [s.text for s in tweetsOnTimeline]
             waterOptions = re.compile(r"#waterMe \d+|#waterMe").search(tweets[0])
@@ -45,7 +40,6 @@ def waterWatcher():
 
         print 'no tweets'
         time.sleep(15)  # Avoid twitter rate limiting
-
     finally:
         if dripController.getStationStatus(0) == 1:
             dripController.setStationStatus(0,0)
@@ -53,4 +47,3 @@ def waterWatcher():
 if __name__ == "__main__":
     while 1:
         waterWatcher()
-
